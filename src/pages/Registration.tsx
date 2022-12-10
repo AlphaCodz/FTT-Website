@@ -40,7 +40,7 @@ const Component = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
-    <div className="border border-t-0 border-b-0 border-dashed border-primary bg-[#FDFDF5] pt-24 pr-16 pl-10 pb-44">
+    <div className="border border-t-0 border-b-0 border-dashed border-primary bg-[#FDFDF5] pt-24 pr-16 pl-10 pb-44 text-center">
       <h3 className="mb-10">
         Registration is now open for a 3-in-1 Live Bootcamp
       </h3>
