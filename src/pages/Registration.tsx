@@ -10,6 +10,7 @@ import Spinner from "../components/Spinner";
 import UserService from "../services/User";
 import { RegisterUserType } from "../utils/Types";
 import { errorMessages } from "../utils/ErrorHandlers";
+import { toastError, toastSuccess } from "../components/Toast";
 
 export default function RegistrationPage() {
   return (
@@ -40,8 +41,8 @@ const Component = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
-    <div className="border border-t-0 border-b-0 border-dashed border-primary bg-[#FDFDF5] pt-24 pr-16 pl-10 pb-44 text-center">
-      <h3 className="mb-10">
+    <div className="border border-t-0 border-b-0 border-dashed border-primary bg-ash pt-24 pr-16 pl-10 pb-44">
+      <h3 className="mb-10 text-center">
         Registration is now open for a 3-in-1 Live Bootcamp
       </h3>
 
@@ -265,7 +266,7 @@ const Component = () => {
 
             for (const [field, value] of Object.entries(state)) {
               if (!value) {
-                toast.error("All fields are required");
+                toastError("All fields are required");
                 setLoading(false);
                 return;
               }
@@ -274,12 +275,12 @@ const Component = () => {
             }
 
             await UserService.register(state);
-            toast.success(
+            toastSuccess(
               "Registration successful🎉🎉🎉! We'll contact you via email"
             );
           } catch (error: any) {
             const errors = errorMessages(error);
-            errors.forEach((e) => toast.error(e));
+            errors.forEach((e) => toastError(e));
             setLoading(false);
           }
         }}
