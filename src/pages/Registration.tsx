@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import UserService from "../services/User";
 import { RegisterUserType } from "../utils/Types";
+import { errorMessages } from "../utils/ErrorHandlers";
 
 export default function RegistrationPage() {
   return (
@@ -34,8 +35,6 @@ const Component = () => {
     employment_status: "",
     How: ""
   });
-
-  console.log({ state });
 
   // TODO: CONVERT TO RTK QUERY
   const [loading, setLoading] = useState<boolean>(false);
@@ -278,8 +277,9 @@ const Component = () => {
             toast.success(
               "Registration successful🎉🎉🎉! We'll contact you via email"
             );
-          } catch (error) {
-            toast.error(String(error));
+          } catch (error: any) {
+            const errors = errorMessages(error);
+            errors.forEach((e) => toast.error(e));
             setLoading(false);
           }
         }}
