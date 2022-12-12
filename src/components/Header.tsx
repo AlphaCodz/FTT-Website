@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 import Logo from "../assets/images/logo.png";
+import RouteConstants from "../constants/RouteConstants";
 
 type Props = {
   isSchool?: boolean;
@@ -41,7 +43,12 @@ export default function Header({ isSchool = false }: Props) {
     <div className="border-b-[3px] border-[#DDDDDB] bg-ash py-4">
       <div className="mx-auto w-[95%]">
         <div className="flex items-center justify-between">
-          <div className={` ${isSchool ? "flex items-baseline gap-3" : ""}`}>
+          <Link
+            to={RouteConstants.HOME}
+            className={` ${
+              isSchool ? "flex items-baseline gap-3 hover:text-black" : ""
+            }`}
+          >
             <img
               src={Logo}
               alt="Flip-to-Tech.png"
@@ -54,7 +61,7 @@ export default function Header({ isSchool = false }: Props) {
             >
               FOR SCHOOL
             </h4>
-          </div>
+          </Link>
 
           <MenuItems className={"md:hidden"} isSchool={isSchool} />
           <div

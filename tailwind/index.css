@@ -940,6 +940,11 @@ video {
   color: #2d281c82;
 }
 
+.hover\:text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .disabled\:cursor-not-allowed:disabled {
   cursor: not-allowed;
 }
