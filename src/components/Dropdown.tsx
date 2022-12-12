@@ -1,58 +1,39 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ArrowDown from "../assets/svgs/ArrowDown";
+import { Dropdown as AntdDropdown, Space } from "antd";
+import type { MenuProps } from "antd";
 
 interface Props {
   placeholder: string;
-  items: Item[];
+  items: MenuProps["items"];
   onChange?: (value: string) => void;
 }
 
-type Item = {
-  key: string;
-  value: string;
-};
-
 export default function Dropdown({ placeholder, items, onChange }: Props) {
-  const [openList, setOpenList] = useState(false);
   const [value, setValue] = useState("");
 
-  // console.log({ value });
+  const onClick: MenuProps["onClick"] = ({ key }) => {
+    setValue(key);
+    onChange?.(key);
+  };
 
   return (
-    <>
+    <AntdDropdown
+      menu={{ items, selectable: true, onClick }}
+      trigger={["click"]}
+    >
       <div
         id="custom__dropdown"
-        className="relative flex h-10 w-full items-center rounded-xl px-3 "
-        onClick={(e) => {
-          setOpenList(!openList);
-        }}
+        className="flex h-10 w-full  items-center rounded-xl px-3 md:text-sm"
       >
         <div
-          className={`flex-grow ${
-            !value ? "text-[#2d281c] text-opacity-60" : ""
-          }`}
+          className={`flex-grow  ${!value ? "text-placeholder" : ""}
+          `}
         >
           {value || placeholder}
         </div>
         <ArrowDown />
-
-        {openList && (
-          <div className="absolute right-0 left-0 top-[38px] z-10 rounded-lg border border-[#2d281c99] bg-white text-sm">
-            {items.map((item) => (
-              <div
-                key={item.key}
-                className="px-3 py-1 first:rounded-t-lg  last:rounded-b-lg hover:bg-[#e4e4de]"
-                onClick={() => {
-                  setValue(item.value);
-                  onChange?.(item.key);
-                }}
-              >
-                {item.value}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
-    </>
+    </AntdDropdown>
   );
 }

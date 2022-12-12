@@ -17,7 +17,7 @@ export default function Input({
       placeholder={placeholder}
       onChange={(e) => onChange?.(e.target.value)}
       className={
-        "h-10 w-full rounded-xl px-3 placeholder:text-[#2D281C] placeholder:text-opacity-60 " +
+        "h-10 w-full rounded-xl px-3 placeholder:text-placeholder md:text-sm " +
         className
       }
     />

@@ -1,7 +1,8 @@
-import RoutesDeclaration from "./Routes";
-
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
+
+import RoutesDeclaration from "./Routes";
 
 function App() {
   return (

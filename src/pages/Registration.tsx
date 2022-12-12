@@ -5,7 +5,6 @@ import Dropdown from "../components/Dropdown";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Input from "../components/Input";
-import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import UserService from "../services/User";
 import { RegisterUserType } from "../utils/Types";
@@ -41,16 +40,16 @@ const Component = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
-    <div className="border border-t-0 border-b-0 border-dashed border-primary bg-ash pt-24 pr-16 pl-10 pb-44">
-      <h3 className="mb-10 text-center">
+    <div className="border border-t-0 border-b-0 border-dashed border-primary bg-ash pt-24 pr-16 pl-10 pb-44 sm:pr-8 sm:pl-5 md:pt-12 md:pb-20">
+      <h3 className="mb-10 text-center md:mb-6 md:text-2xl">
         Registration is now open for a 3-in-1 Live Bootcamp
       </h3>
 
-      <p className="mb-20 text-center font-medium">
+      <p className="mb-20 text-center font-medium sm:text-sm md:mb-10">
         ENTER YOUR DETAILS TO ENROLL FOR THE NEXT BOOTCAMP <br /> (JANUARY 2023)
       </p>
 
-      <div className="mb-12 grid grid-cols-2 gap-10">
+      <div className="mb-12 grid grid-cols-2 gap-10 md:grid-cols-1">
         <div className="">
           <label>
             First Name <span className="text-red-500">*</span>
@@ -93,21 +92,22 @@ const Component = () => {
           <label>
             Age Range <span className="text-red-500">*</span>
           </label>
+
           <Dropdown
             placeholder="Select Age range"
             onChange={(value) => setState((p) => ({ ...p, age_range: value }))}
             items={[
               {
                 key: "18-25",
-                value: "18-25"
+                label: "18-25"
               },
               {
                 key: "26-33",
-                value: "26-33"
+                label: "26-33"
               },
               {
                 key: "34-40",
-                value: "34-40"
+                label: "34-40"
               }
             ]}
           />
@@ -122,11 +122,11 @@ const Component = () => {
             items={[
               {
                 key: "M",
-                value: "Male"
+                label: "Male"
               },
               {
                 key: "F",
-                value: "Female"
+                label: "Female"
               }
             ]}
           />
@@ -141,11 +141,11 @@ const Component = () => {
             items={[
               {
                 key: "LA",
-                value: "Lagos"
+                label: "Lagos"
               },
               {
                 key: "KAD",
-                value: "Kaduna"
+                label: "Kaduna"
               }
             ]}
           />
@@ -160,16 +160,16 @@ const Component = () => {
             items={[
               {
                 key: "Mobile App Development",
-                value: "Mobile App Development"
+                label: "Mobile App Development"
               },
 
               {
                 key: "Data Analysis",
-                value: "Data Analysis"
+                label: "Data Analysis"
               },
               {
                 key: "Python",
-                value: "Python"
+                label: "Python"
               }
             ]}
           />
@@ -186,12 +186,12 @@ const Component = () => {
             items={[
               {
                 key: "U-Grad",
-                value: "Under Graduate"
+                label: "Under Graduate"
               },
 
               {
                 key: "Graduate",
-                value: "Graduate"
+                label: "Graduate"
               }
             ]}
           />
@@ -208,12 +208,12 @@ const Component = () => {
             items={[
               {
                 key: "Employed",
-                value: "Employed"
+                label: "Employed"
               },
 
               {
                 key: "Unemployed",
-                value: "Unemployed"
+                label: "Unemployed"
               }
             ]}
           />
@@ -228,22 +228,22 @@ const Component = () => {
             items={[
               {
                 key: "Social Media",
-                value: "Social Media"
+                label: "Social Media"
               },
               {
                 key: "Advertisements",
-                value: "Advertisements"
+                label: "Advertisements"
               },
               {
                 key: "Referral",
-                value: "Referral"
+                label: "Referral"
               }
             ]}
           />
         </div>
       </div>
 
-      <p className="mb-6">
+      <p className="mb-6 md:text-sm">
         By submitting your info in the form above, you agree to our{" "}
         <Link to="#" className="text-primary">
           Terms of Use
@@ -260,6 +260,8 @@ const Component = () => {
         className="block rounded-xl bg-primary px-7 py-2 text-white disabled:cursor-not-allowed disabled:bg-primaryDisabled"
         disabled={loading}
         onClick={async () => {
+          console.log({ state });
+          return;
           const form = new FormData();
           try {
             setLoading(true);

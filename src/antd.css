@@ -1,0 +1,8 @@
+.ant-dropdown-menu-title-content {
+  font-family: "Poppins", sans-serif;
+}
+
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected {
+  color: #2d281c;
+  background-color: #e4e4de;
+}
