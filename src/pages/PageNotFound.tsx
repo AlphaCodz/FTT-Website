@@ -8,7 +8,15 @@ export default function PageNotFound() {
         Sorry! Can't find the page you're looking for
       </h3>
 
-      <Link to={RouteConstants.HOME}>Back to home</Link>
+      <Link to={RouteConstants.HOME} className="block">
+        Back to home
+      </Link>
+      <Link to={RouteConstants.REGISTER_SCHOOL} className="block">
+        Register School
+      </Link>
+      <Link to={RouteConstants.REGISTER_INDIVIDUAL} className="block">
+        Register Individual
+      </Link>
     </>
   );
 }
