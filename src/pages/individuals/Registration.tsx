@@ -110,6 +110,20 @@ const Component = () => {
                 label: "34-40"
               }
             ]}
+            rawItems={[
+              {
+                key: "18-25",
+                label: "18-25"
+              },
+              {
+                key: "26-33",
+                label: "26-33"
+              },
+              {
+                key: "34-40",
+                label: "34-40"
+              }
+            ]}
           />
         </div>
         <div className="">
@@ -120,6 +134,16 @@ const Component = () => {
             placeholder="Select Gender"
             onChange={(value) => setState((p) => ({ ...p, gender: value }))}
             items={[
+              {
+                key: "M",
+                label: "Male"
+              },
+              {
+                key: "F",
+                label: "Female"
+              }
+            ]}
+            rawItems={[
               {
                 key: "M",
                 label: "Male"
@@ -176,6 +200,21 @@ const Component = () => {
                 label: "Python"
               }
             ]}
+            rawItems={[
+              {
+                key: "Mobile App Development",
+                label: "Mobile App Development"
+              },
+
+              {
+                key: "Data Analysis",
+                label: "Data Analysis"
+              },
+              {
+                key: "Python",
+                label: "Python"
+              }
+            ]}
           />
         </div>
         <div className="">
@@ -188,6 +227,17 @@ const Component = () => {
               setState((p) => ({ ...p, educational_level: value }))
             }
             items={[
+              {
+                key: "U-Grad",
+                label: "Under Graduate"
+              },
+
+              {
+                key: "Graduate",
+                label: "Graduate"
+              }
+            ]}
+            rawItems={[
               {
                 key: "U-Grad",
                 label: "Under Graduate"
@@ -220,6 +270,17 @@ const Component = () => {
                 label: "Unemployed"
               }
             ]}
+            rawItems={[
+              {
+                key: "Employed",
+                label: "Employed"
+              },
+
+              {
+                key: "Unemployed",
+                label: "Unemployed"
+              }
+            ]}
           />
         </div>
         <div className="">
@@ -230,6 +291,20 @@ const Component = () => {
             placeholder="Select option"
             onChange={(value) => setState((p) => ({ ...p, How: value }))}
             items={[
+              {
+                key: "Social Media",
+                label: "Social Media"
+              },
+              {
+                key: "Advertisements",
+                label: "Advertisements"
+              },
+              {
+                key: "Referral",
+                label: "Referral"
+              }
+            ]}
+            rawItems={[
               {
                 key: "Social Media",
                 label: "Social Media"

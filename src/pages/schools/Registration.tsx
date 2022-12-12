@@ -177,6 +177,17 @@ const Component = () => {
                 label: "Public School"
               }
             ]}
+            rawItems={[
+              {
+                key: "PRIVATE",
+                label: "Private School"
+              },
+
+              {
+                key: "GOVERNMENT",
+                label: "Public School"
+              }
+            ]}
           />
         </div>
         <div className="">
@@ -209,6 +220,17 @@ const Component = () => {
                 label: "No"
               }
             ]}
+            rawItems={[
+              {
+                key: "True",
+                label: "Yes"
+              },
+
+              {
+                key: "False",
+                label: "No"
+              }
+            ]}
           />
         </div>
         <div className="">
@@ -220,6 +242,21 @@ const Component = () => {
             placeholder="Select level of institution"
             onChange={(value) => setState((p) => ({ ...p, level: value }))}
             items={[
+              {
+                key: "PRIMARY",
+                label: "Primary Only"
+              },
+
+              {
+                key: "SECONDARY",
+                label: "Secondary Only"
+              },
+              {
+                key: "BOTH",
+                label: "Both Primary & Secondary"
+              }
+            ]}
+            rawItems={[
               {
                 key: "PRIMARY",
                 label: "Primary Only"
