@@ -6,15 +6,34 @@ import {
 } from "react-router-dom";
 
 import RouteConstants from "./constants/RouteConstants";
-import RegistrationPage from "./pages/Registration";
+import IndividualRegistrationPage from "./pages/individuals/Registration";
+import SchoolRegistrationPage from "./pages/schools/Registration";
+import PageNotFound from "./pages/PageNotFound";
 
 export default function RoutesDeclaration() {
   return (
     <Router>
       <Routes>
-        <Route path={RouteConstants.HOME} element={<RegistrationPage />} />
+        <Route
+          path={RouteConstants.PAGE_NOT_FOUND}
+          element={<PageNotFound />}
+        />
+
+        {/* Routes for Individuals */}
+        <Route
+          path={RouteConstants.REGISTER_INDIVIDUAL}
+          element={<IndividualRegistrationPage />}
+        />
+        {/* Routes for Individuals ends*/}
 
         {/* <Route path={RouteConstants.REGISTER} element={<RegistrationPage />} /> */}
+
+        {/* Routes for Schools */}
+        <Route
+          path={RouteConstants.REGISTER_SCHOOL}
+          element={<SchoolRegistrationPage />}
+        />
+        {/* Routes for Schools ends*/}
       </Routes>
     </Router>
   );

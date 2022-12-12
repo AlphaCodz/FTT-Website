@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Container from "../components/Container";
-import Dropdown from "../components/Dropdown";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Input from "../components/Input";
-import Spinner from "../components/Spinner";
-import UserService from "../services/User";
-import { RegisterUserType } from "../utils/Types";
-import { errorMessages } from "../utils/ErrorHandlers";
-import { toastError, toastSuccess } from "../components/Toast";
+import Container from "../../components/Container";
+import Dropdown, { StateDropdown } from "../../components/Dropdown";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Input from "../../components/Input";
+import Spinner from "../../components/Spinner";
+import UserService from "../../services/User";
+import { RegisterUserType } from "../../utils/Types";
+import { errorMessages } from "../../utils/ErrorHandlers";
+import { toastError, toastSuccess } from "../../components/Toast";
 
 export default function RegistrationPage() {
   return (
@@ -49,7 +49,7 @@ const Component = () => {
         ENTER YOUR DETAILS TO ENROLL FOR THE NEXT BOOTCAMP <br /> (JANUARY 2023)
       </p>
 
-      <div className="mb-12 grid grid-cols-2 gap-10 md:grid-cols-1">
+      <div className="mb-12 grid grid-cols-2 gap-10 md:mb-10 md:grid-cols-1 md:gap-6">
         <div className="">
           <label>
             First Name <span className="text-red-500">*</span>
@@ -135,7 +135,7 @@ const Component = () => {
           <label>
             State <span className="text-red-500">*</span>
           </label>
-          <Dropdown
+          {/* <Dropdown
             placeholder="Select your state"
             onChange={(value) => setState((p) => ({ ...p, state: value }))}
             items={[
@@ -148,6 +148,10 @@ const Component = () => {
                 label: "Kaduna"
               }
             ]}
+          /> */}
+          <StateDropdown
+            placeholder="Select your state"
+            onChange={(value) => setState((p) => ({ ...p, state: value }))}
           />
         </div>
         <div className="">
@@ -256,12 +260,11 @@ const Component = () => {
         to personalize your experience.
       </p>
 
+      {/* <div className=""> */}
       <button
-        className="block rounded-xl bg-primary px-7 py-2 text-white disabled:cursor-not-allowed disabled:bg-primaryDisabled"
+        className="block rounded-xl bg-primary px-7 py-2 text-white disabled:cursor-not-allowed disabled:bg-primaryDisabled md:mx-auto"
         disabled={loading}
         onClick={async () => {
-          console.log({ state });
-          return;
           const form = new FormData();
           try {
             setLoading(true);
@@ -280,6 +283,7 @@ const Component = () => {
             toastSuccess(
               "Registration successful🎉🎉🎉! We'll contact you via email"
             );
+            setLoading(false);
           } catch (error: any) {
             const errors = errorMessages(error);
             errors.forEach((e) => toastError(e));
@@ -289,6 +293,7 @@ const Component = () => {
       >
         {loading ? <Spinner /> : "Enroll"}
       </button>
+      {/* </div> */}
     </div>
   );
 };

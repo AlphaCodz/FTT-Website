@@ -4,34 +4,59 @@ import { GrClose } from "react-icons/gr";
 
 import Logo from "../assets/images/logo.png";
 
+type Props = {
+  isSchool?: boolean;
+};
+
 type MenuItemsProps = {
   className?: string;
   mobile?: Boolean;
+  isSchool: boolean;
 };
-const MenuItems = ({ className, mobile = false }: MenuItemsProps) => {
+const MenuItems = ({ className, isSchool }: MenuItemsProps) => {
   return (
     <div className={`flex items-center justify-between ${className}`}>
-      <p className="mr-3 text-primary">Home</p>
-      <button className="block rounded-xl bg-primary px-6 py-2 text-white">
-        Enroll
-      </button>
+      {isSchool ? (
+        <>
+          <button className="block rounded-xl bg-primary px-6 py-2 text-white">
+            Contact Us
+          </button>
+        </>
+      ) : (
+        <>
+          <p className="mr-3 text-primary">Home</p>
+          <button className="block rounded-xl bg-primary px-6 py-2 text-white">
+            Enroll
+          </button>
+        </>
+      )}
     </div>
   );
 };
 
-export default function Header() {
+export default function Header({ isSchool = false }: Props) {
   const [menuOpen, setMenuOpen] = useState<Boolean>(false);
 
   return (
     <div className="border-b-[3px] border-[#DDDDDB] bg-ash py-4">
       <div className="mx-auto w-[95%]">
         <div className="flex items-center justify-between">
-          <img
-            src={Logo}
-            alt="Flip-to-Tech.png"
-            className="block w-40 sm:w-32"
-          />
-          <MenuItems className={"md:hidden"} />
+          <div className={` ${isSchool ? "flex items-baseline gap-3" : ""}`}>
+            <img
+              src={Logo}
+              alt="Flip-to-Tech.png"
+              className="block w-40 sm:w-32"
+            />
+            <h4
+              className={`text-3xl font-bold sm:text-xl md:text-2xl ${
+                isSchool ? "block" : "hidden"
+              }`}
+            >
+              FOR SCHOOL
+            </h4>
+          </div>
+
+          <MenuItems className={"md:hidden"} isSchool={isSchool} />
           <div
             className="hidden transition-all delay-200 md:block"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -60,7 +85,10 @@ export default function Header() {
             menuOpen ? "h-24" : ""
           }`}
         >
-          <MenuItems className="flex-col !items-start gap-2 pt-6" />
+          <MenuItems
+            className="flex-col !items-start gap-2 pt-6"
+            isSchool={isSchool}
+          />
         </div>
       </div>
     </div>

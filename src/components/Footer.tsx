@@ -5,7 +5,7 @@ import Input from "./Input";
 
 export default function Footer() {
   return (
-    <div className="bg-[#2D281C] font-light text-white">
+    <div className="bg-[#2D281C] text-white sm:font-light">
       <div className="mx-auto w-11/12 pt-16 pb-4 sm:w-4/5">
         <div className="mx-auto mb-8 w-3/5 sm:w-full">
           <h5 className="mb-2 text-center text-xl font-medium text-yellow-300 sm:text-lg">
